@@ -7,7 +7,7 @@
   <style>
     :root {
       --primary: #1e88e5;
-      --bg: #f5f7fb;
+      --bg: #eef6f2;
       --text: #1f2937;
       --card: #ffffff;
       --border: #dbe3ee;
@@ -18,38 +18,93 @@
 
     body {
       margin: 0;
+      min-height: 100vh;
       font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
-      background: var(--bg);
       color: var(--text);
       line-height: 1.5;
       padding: 24px;
+      background:
+        linear-gradient(to right, rgba(112, 163, 138, 0.08) 1px, transparent 1px) 0 0 / 58px 58px,
+        linear-gradient(to bottom, rgba(112, 163, 138, 0.08) 1px, transparent 1px) 0 0 / 58px 58px,
+        radial-gradient(circle at 5% 5%, #f7fbf8, #e7f1ec 60%, #dcebe4 100%);
     }
 
     .container {
-      max-width: 860px;
+      max-width: 920px;
       margin: 0 auto;
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: 0 12px 30px rgba(30, 136, 229, 0.08);
+      border-radius: 18px;
+      box-shadow: 0 14px 36px rgba(74, 115, 99, 0.16);
       overflow: hidden;
+      backdrop-filter: blur(3px);
     }
 
     header {
-      padding: 28px 28px 12px;
-      background: linear-gradient(140deg, #e3f2fd, #f3f8ff);
+      padding: 24px 28px 16px;
+      background: linear-gradient(145deg, #e6f3ed, #f6fbf8);
       border-bottom: 1px solid var(--border);
     }
 
     h1 {
       margin: 0 0 8px;
-      font-size: 1.7rem;
+      font-size: 1.78rem;
     }
 
     p.desc {
       margin: 0;
-      color: #42526b;
+      color: var(--muted);
       font-size: 0.98rem;
+    }
+
+    .health-banner {
+      margin-top: 16px;
+      border: 1px solid #bdd4c8;
+      border-radius: 14px;
+      background: #fbfdfc;
+      overflow: hidden;
+    }
+
+    .health-top {
+      padding: 14px;
+      display: grid;
+      grid-template-columns: minmax(120px, 1fr) auto minmax(120px, 1fr);
+      gap: 10px;
+      align-items: center;
+    }
+
+    .stat-card {
+      border: 1px solid #d9e7df;
+      border-top: 4px solid #cc7052;
+      border-radius: 10px;
+      text-align: center;
+      padding: 10px;
+      background: #fff;
+    }
+
+    .stat-card strong {
+      display: block;
+      color: #cb6f4f;
+      font-size: clamp(1.4rem, 4vw, 2.1rem);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .pulse-wrap {
+      color: #73aa90;
+      font-size: clamp(1.45rem, 4vw, 2.2rem);
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+
+    .health-note {
+      margin: 0;
+      padding: 12px 14px;
+      text-align: center;
+      font-size: 0.97rem;
+      background: #eaf3ef;
+      border-top: 1px solid #d6e5de;
     }
 
     form {
@@ -63,6 +118,7 @@
       padding: 14px 16px 16px;
       border: 1px solid var(--border);
       border-radius: 12px;
+      background: #ffffffcf;
     }
 
     legend {
@@ -113,7 +169,7 @@
 
     button {
       border: 0;
-      background: var(--primary);
+      background: linear-gradient(135deg, #3fbb84, #258fbc);
       color: #fff;
       border-radius: 999px;
       padding: 12px 22px;
@@ -121,10 +177,11 @@
       font-weight: 600;
       cursor: pointer;
       justify-self: start;
+      box-shadow: 0 8px 20px rgba(36, 121, 149, 0.3);
     }
 
     button:hover {
-      background: #1565c0;
+      filter: brightness(0.95);
     }
 
     .note {
@@ -143,7 +200,22 @@
   <main class="container">
     <header>
       <h1>Khảo sát tìm nhóm cầu lông phù hợp</h1>
-      <p class="desc">Vui lòng điền thông tin bên dưới để hệ thống gợi ý nhóm đánh phù hợp nhất với bạn.</p>
+      <p class="desc">Điền thông tin để hệ thống gợi ý nhóm đánh phù hợp với khu vực, trình độ và lịch rảnh của bạn.</p>
+
+      <section class="health-banner" aria-label="Lợi ích sức khỏe khi chơi cầu lông">
+        <div class="health-top">
+          <article class="stat-card">
+            <strong>-47%</strong>
+            <span>Nguy cơ tử vong do mọi nguyên nhân</span>
+          </article>
+          <div class="pulse-wrap" aria-hidden="true">~\/\/\/🏸\/\/~</div>
+          <article class="stat-card">
+            <strong>-59%</strong>
+            <span>Nguy cơ tử vong do bệnh tim mạch</span>
+          </article>
+        </div>
+        <p class="health-note">Nghiên cứu dịch tễ học cho thấy người chơi cầu lông thường xuyên có chỉ số tim mạch tốt hơn và huyết áp ổn định hơn.</p>
+      </section>
     </header>
 
     <form id="surveyForm" novalidate>
