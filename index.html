@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khảo sát tìm nhóm cầu lông phù hợp</title>
+  <style>
+    :root {
+      --primary: #1e88e5;
+      --bg: #f5f7fb;
+      --text: #1f2937;
+      --card: #ffffff;
+      --border: #dbe3ee;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 24px;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(30, 136, 229, 0.08);
+      overflow: hidden;
+    }
+
+    header {
+      padding: 28px 28px 12px;
+      background: linear-gradient(140deg, #e3f2fd, #f3f8ff);
+      border-bottom: 1px solid var(--border);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.7rem;
+    }
+
+    p.desc {
+      margin: 0;
+      color: #42526b;
+      font-size: 0.98rem;
+    }
+
+    form {
+      padding: 22px 28px 28px;
+      display: grid;
+      gap: 18px;
+    }
+
+    fieldset {
+      margin: 0;
+      padding: 14px 16px 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    legend {
+      padding: 0 8px;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      margin-top: 6px;
+      padding: 10px 12px;
+      border: 1px solid #c8d4e5;
+      border-radius: 10px;
+      font: inherit;
+      background: #fff;
+    }
+
+    .options {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 400;
+    }
+
+    button {
+      border: 0;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 999px;
+      padding: 12px 22px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      justify-self: start;
+    }
+
+    button:hover {
+      background: #1565c0;
+    }
+
+    .note {
+      color: #475569;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      body { padding: 12px; }
+      header, form { padding-left: 16px; padding-right: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Khảo sát tìm nhóm cầu lông phù hợp</h1>
+      <p class="desc">Vui lòng điền thông tin bên dưới để hệ thống gợi ý nhóm đánh phù hợp nhất với bạn.</p>
+    </header>
+
+    <form id="surveyForm">
+      <fieldset>
+        <legend>Thông tin cá nhân</legend>
+        <label for="name">Họ và tên *</label>
+        <input id="name" name="name" type="text" required placeholder="Ví dụ: Nguyễn Văn A" />
+
+        <label for="email">Email *</label>
+        <input id="email" name="email" type="email" required placeholder="example@email.com" />
+
+        <label for="age">Tuổi</label>
+        <input id="age" name="age" type="number" min="10" max="80" placeholder="Ví dụ: 25" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Kỹ năng & mục tiêu</legend>
+
+        <label for="level">Trình độ hiện tại</label>
+        <select id="level" name="level">
+          <option value="beginner">Mới bắt đầu</option>
+          <option value="intermediate">Trung bình</option>
+          <option value="advanced">Nâng cao</option>
+        </select>
+
+        <label>Tần suất mong muốn mỗi tuần</label>
+        <div class="options">
+          <label class="option"><input type="radio" name="frequency" value="1-2" checked /> 1-2 buổi</label>
+          <label class="option"><input type="radio" name="frequency" value="3-4" /> 3-4 buổi</label>
+          <label class="option"><input type="radio" name="frequency" value="5+" /> 5 buổi trở lên</label>
+        </div>
+
+        <label>Khung giờ phù hợp</label>
+        <div class="options">
+          <label class="option"><input type="checkbox" name="time" value="sáng" /> Buổi sáng</label>
+          <label class="option"><input type="checkbox" name="time" value="chiều" /> Buổi chiều</label>
+          <label class="option"><input type="checkbox" name="time" value="tối" /> Buổi tối</label>
+        </div>
+
+        <label for="note">Ghi chú thêm</label>
+        <textarea id="note" name="note" rows="4" placeholder="Ví dụ: ưu tiên sân trong nhà, khu vực gần trung tâm..."></textarea>
+      </fieldset>
+
+      <button type="submit">Gửi khảo sát</button>
+      <p class="note">* Thông tin của bạn chỉ dùng để ghép nhóm cầu lông phù hợp.</p>
+    </form>
+  </main>
+
+  <script>
+    const form = document.getElementById('surveyForm');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      alert('Cảm ơn bạn! Khảo sát đã được ghi nhận.');
+      form.reset();
+    });
+  </script>
+</body>
+</html>
