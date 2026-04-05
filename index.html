@@ -9,10 +9,8 @@
       --primary: #1e88e5;
       --bg: #eef6f2;
       --text: #1f2937;
-      --card: #ffffffee;
-      --border: #c8d8ce;
-      --accent: #70a38a;
-      --muted: #42526b;
+      --card: #ffffff;
+      --border: #dbe3ee;
       --error: #b91c1c;
     }
 
@@ -135,6 +133,7 @@
       font-weight: 500;
     }
 
+    input[type="text"],
     input[type="tel"],
     input[type="number"],
     textarea {
@@ -189,16 +188,6 @@
       color: #475569;
       font-size: 0.9rem;
       margin: 0;
-    }
-
-    @media (max-width: 720px) {
-      .health-top {
-        grid-template-columns: 1fr;
-      }
-
-      .pulse-wrap {
-        order: -1;
-      }
     }
 
     @media (max-width: 640px) {
@@ -374,8 +363,9 @@
       }
 
       const payload = buildPayload(form);
-      sessionStorage.setItem('surveyPayload', JSON.stringify(payload));
-      window.location.href = './thank-you.html';
+      console.log('survey_payload', payload);
+      alert('Cảm ơn bạn! Khảo sát đã được ghi nhận.');
+      form.reset();
     });
   </script>
 </body>
