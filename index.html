@@ -11,6 +11,7 @@
       --text: #1f2937;
       --card: #ffffff;
       --border: #dbe3ee;
+      --error: #b91c1c;
     }
 
     * { box-sizing: border-box; }
@@ -77,9 +78,8 @@
     }
 
     input[type="text"],
-    input[type="email"],
+    input[type="tel"],
     input[type="number"],
-    select,
     textarea {
       width: 100%;
       margin-top: 6px;
@@ -101,6 +101,14 @@
       align-items: center;
       gap: 10px;
       font-weight: 400;
+      margin-top: 0;
+    }
+
+    .error {
+      margin: 0;
+      color: var(--error);
+      font-size: 0.92rem;
+      display: none;
     }
 
     button {
@@ -122,6 +130,7 @@
     .note {
       color: #475569;
       font-size: 0.9rem;
+      margin: 0;
     }
 
     @media (max-width: 640px) {
@@ -137,85 +146,152 @@
       <p class="desc">Vui lòng điền thông tin bên dưới để hệ thống gợi ý nhóm đánh phù hợp nhất với bạn.</p>
     </header>
 
-    <form id="surveyForm">
+    <form id="surveyForm" novalidate>
       <fieldset>
         <legend>Thông tin cá nhân</legend>
-        <label for="name">Giới tính *</label>
-        <div class="options">
-          <label class="option"><input type="radio" name="frequency" value="1-2" checked /> Nam</label>
-          <label class="option"><input type="radio" name="frequency" value="3-4" /> Nữ</label>
-          <label class="option"><input type="radio" name="frequency" value="5+" /> Khác</label>
+
+        <label for="gender-male">Giới tính *</label>
+        <div class="options" role="radiogroup" aria-label="Giới tính">
+          <label class="option" for="gender-male"><input id="gender-male" type="radio" name="gender" value="male" required /> Nam</label>
+          <label class="option" for="gender-female"><input id="gender-female" type="radio" name="gender" value="female" /> Nữ</label>
+          <label class="option" for="gender-other"><input id="gender-other" type="radio" name="gender" value="other" /> Khác</label>
         </div>
-        <label for="age">Năm sinh</label>
-        <input id="age" name="age" type="number" min="10" max="80" placeholder="Ví dụ: 2002" />
-          <label for="name">Khu vực sinh sống *</label>
-        <div class="options">
-          <label class="option"><input type="radio" name="frequency" value="1-2" checked /> Phường 1, 2</label>
-          <label class="option"><input type="radio" name="frequency" value="3-4" /> Phường 2</label>
-          <label class="option"><input type="radio" name="frequency" value="5+" /> Phường 3</label>
-          <label class="option"><input type="radio" name="frequency" value="5+" /> Phường 4</label>
-          <label class="option"><input type="radio" name="frequency" value="5+" /> Phường 5</label>
-          <label class="option"><input type="radio" name="frequency" value="5+" /> Phường 6</label>
-          <label class="option"><input type="radio" name="frequency" value="5+" /> Phường 7</label>
-          <label class="option"><input type="radio" name="frequency" value="5+" /> Khác</label>
+
+        <label for="birthYear">Năm sinh *</label>
+        <input id="birthYear" name="birthYear" type="number" min="1940" max="2018" placeholder="Ví dụ: 2002" required />
+
+        <label for="ward-1">Khu vực sinh sống *</label>
+        <div class="options" role="radiogroup" aria-label="Khu vực sinh sống">
+          <label class="option" for="ward-1"><input id="ward-1" type="radio" name="ward" value="Phường 1" required /> Phường 1</label>
+          <label class="option" for="ward-2"><input id="ward-2" type="radio" name="ward" value="Phường 2" /> Phường 2</label>
+          <label class="option" for="ward-3"><input id="ward-3" type="radio" name="ward" value="Phường 3" /> Phường 3</label>
+          <label class="option" for="ward-4"><input id="ward-4" type="radio" name="ward" value="Phường 4" /> Phường 4</label>
+          <label class="option" for="ward-5"><input id="ward-5" type="radio" name="ward" value="Phường 5" /> Phường 5</label>
+          <label class="option" for="ward-6"><input id="ward-6" type="radio" name="ward" value="Phường 6" /> Phường 6</label>
+          <label class="option" for="ward-7"><input id="ward-7" type="radio" name="ward" value="Phường 7" /> Phường 7</label>
+          <label class="option" for="ward-other"><input id="ward-other" type="radio" name="ward" value="Khác" /> Khác</label>
         </div>
-        <label for="age">Số điện thoại / Zalo (không bắt buộc)</label>
-        <input id="age" name="age" type="number" placeholder="Ví dụ: 097345333" />
+
+        <label for="phone">Số điện thoại / Zalo (không bắt buộc)</label>
+        <input id="phone" name="phone" type="tel" inputmode="numeric" pattern="[0-9]{9,11}" placeholder="Ví dụ: 0973453333" />
       </fieldset>
 
       <fieldset>
         <legend>Kỹ năng & mục tiêu</legend>
 
-        <label for="level">Bạn tự đánh giá trình độ cầu lông của mình</label>
-        <div class="options">
-          <label class="option"><input type="radio" name="frequency" value="1-2" checked /> Mới bắt đầu (chưa nắm luật/kỹ thuật cơ bản)</label>
-          <label class="option"><input type="radio" name="frequency" value="3-4" /> Cơ bản (đánh qua lại, biết luật)</label>
-          <label class="option"><input type="radio" name="frequency" value="5+" /> Trung bình (di chuyển ổn, biết đánh đôi)</label>
-          <label class="option"><input type="radio" name="frequency" value="5+" /> Khá (có chiến thuật, điều cầu tốt)</label>
-          <label class="option"><input type="radio" name="frequency" value="5+" /> Nâng cao (thi đấu, đánh giải)</label>
+        <label for="level-beginner">Bạn tự đánh giá trình độ cầu lông của mình *</label>
+        <div class="options" role="radiogroup" aria-label="Trình độ cầu lông">
+          <label class="option" for="level-beginner"><input id="level-beginner" type="radio" name="level" value="Mới bắt đầu" required /> Mới bắt đầu (chưa nắm luật/kỹ thuật cơ bản)</label>
+          <label class="option" for="level-basic"><input id="level-basic" type="radio" name="level" value="Cơ bản" /> Cơ bản (đánh qua lại, biết luật)</label>
+          <label class="option" for="level-mid"><input id="level-mid" type="radio" name="level" value="Trung bình" /> Trung bình (di chuyển ổn, biết đánh đôi)</label>
+          <label class="option" for="level-good"><input id="level-good" type="radio" name="level" value="Khá" /> Khá (có chiến thuật, điều cầu tốt)</label>
+          <label class="option" for="level-advanced"><input id="level-advanced" type="radio" name="level" value="Nâng cao" /> Nâng cao (thi đấu, đánh giải)</label>
         </div>
 
-        <label>Bạn đã chơi cầu lông bao lâu?</label>
-        <div class="options">
-          <label class="option"><input type="radio" name="frequency" value="1-2" checked /> Dưới 3 tháng</label>
-          <label class="option"><input type="radio" name="frequency" value="3-4" /> 3–12 tháng</label>
-          <label class="option"><input type="radio" name="frequency" value="5+" /> 1–3 năm</label>
-          <label class="option"><input type="radio" name="frequency" value="5+" /> Trên 3 năm</label>
+        <label for="exp-under-3m">Bạn đã chơi cầu lông bao lâu? *</label>
+        <div class="options" role="radiogroup" aria-label="Kinh nghiệm chơi">
+          <label class="option" for="exp-under-3m"><input id="exp-under-3m" type="radio" name="experience" value="Dưới 3 tháng" required /> Dưới 3 tháng</label>
+          <label class="option" for="exp-3-12m"><input id="exp-3-12m" type="radio" name="experience" value="3-12 tháng" /> 3–12 tháng</label>
+          <label class="option" for="exp-1-3y"><input id="exp-1-3y" type="radio" name="experience" value="1-3 năm" /> 1–3 năm</label>
+          <label class="option" for="exp-over-3y"><input id="exp-over-3y" type="radio" name="experience" value="Trên 3 năm" /> Trên 3 năm</label>
         </div>
-        <label>Khung giờ bạn muốn chơi</label>
+
+        <label for="time-morning">Khung giờ bạn muốn chơi</label>
         <div class="options">
-          <label class="option"><input type="checkbox" name="time" value="sáng" /> Buổi sáng (trước 11:00)</label>
-          <label class="option"><input type="checkbox" name="time" value="chiều" /> Chiều (14:00-17:00)</label>
-          <label class="option"><input type="checkbox" name="time" value="tối" /> Chiều tối (17:00-19:00)</label>
-          <label class="option"><input type="checkbox" name="time" value="tối" /> Tối (sau 19:00)</label>
+          <label class="option" for="time-morning"><input id="time-morning" type="checkbox" name="preferredTimes" value="Buổi sáng (trước 11:00)" /> Buổi sáng (trước 11:00)</label>
+          <label class="option" for="time-afternoon"><input id="time-afternoon" type="checkbox" name="preferredTimes" value="Chiều (14:00-17:00)" /> Chiều (14:00-17:00)</label>
+          <label class="option" for="time-evening"><input id="time-evening" type="checkbox" name="preferredTimes" value="Chiều tối (17:00-19:00)" /> Chiều tối (17:00-19:00)</label>
+          <label class="option" for="time-night"><input id="time-night" type="checkbox" name="preferredTimes" value="Tối (sau 19:00)" /> Tối (sau 19:00)</label>
         </div>
-        <label>Bạn có thể chơi vào ngày nào?</label>
+
+        <label for="day-246">Bạn có thể chơi vào ngày nào?</label>
         <div class="options">
-          <label class="option"><input type="checkbox" name="time" value="sáng" /> Thứ 2 - 4 - 6</label>
-          <label class="option"><input type="checkbox" name="time" value="chiều" /> Thứ 3 - 5 - 7</label>
-          <label class="option"><input type="checkbox" name="time" value="tối" /> Chủ nhật</label>
+          <label class="option" for="day-246"><input id="day-246" type="checkbox" name="availableDays" value="Thứ 2 - 4 - 6" /> Thứ 2 - 4 - 6</label>
+          <label class="option" for="day-357"><input id="day-357" type="checkbox" name="availableDays" value="Thứ 3 - 5 - 7" /> Thứ 3 - 5 - 7</label>
+          <label class="option" for="day-sunday"><input id="day-sunday" type="checkbox" name="availableDays" value="Chủ nhật" /> Chủ nhật</label>
         </div>
-         <label>Bạn chơi cầu lông để:</label>
+
+        <label for="goal-fun">Bạn chơi cầu lông để:</label>
         <div class="options">
-          <label class="option"><input type="checkbox" name="time" value="sáng" /> Giải trí, vận động</label>
-          <label class="option"><input type="checkbox" name="time" value="chiều" /> Rèn luyện sức khỏe</label>
-          <label class="option"><input type="checkbox" name="time" value="tối" /> Giao lưu, kết bạn</label>
-          <label class="option"><input type="checkbox" name="time" value="tối" /> Nâng cao trình độ / thi đấu</label>
+          <label class="option" for="goal-fun"><input id="goal-fun" type="checkbox" name="goals" value="Giải trí, vận động" /> Giải trí, vận động</label>
+          <label class="option" for="goal-health"><input id="goal-health" type="checkbox" name="goals" value="Rèn luyện sức khỏe" /> Rèn luyện sức khỏe</label>
+          <label class="option" for="goal-social"><input id="goal-social" type="checkbox" name="goals" value="Giao lưu, kết bạn" /> Giao lưu, kết bạn</label>
+          <label class="option" for="goal-competition"><input id="goal-competition" type="checkbox" name="goals" value="Nâng cao trình độ / thi đấu" /> Nâng cao trình độ / thi đấu</label>
         </div>
+
         <label for="note">Ghi chú thêm</label>
         <textarea id="note" name="note" rows="4" placeholder="Ví dụ: ưu tiên khu vực trung tâm..."></textarea>
       </fieldset>
-      
+
+      <p id="formError" class="error" role="alert"></p>
       <button type="submit">Gửi khảo sát</button>
       <p class="note">* Thông tin của bạn chỉ dùng để ghép nhóm cầu lông phù hợp.</p>
     </form>
   </main>
 
   <script>
+    function getCheckedValues(form, fieldName) {
+      return Array.from(form.querySelectorAll(`input[name="${fieldName}"]:checked`)).map((input) => input.value);
+    }
+
+    function validateBirthYear(value) {
+      const year = Number(value);
+      const currentYear = new Date().getFullYear();
+      const minYear = currentYear - 80;
+      const maxYear = currentYear - 8;
+
+      if (!Number.isInteger(year)) {
+        return 'Năm sinh phải là số nguyên.';
+      }
+
+      if (year < minYear || year > maxYear) {
+        return `Năm sinh cần trong khoảng ${minYear} - ${maxYear}.`;
+      }
+
+      return '';
+    }
+
+    function buildPayload(form) {
+      return {
+        gender: form.elements.gender.value,
+        birthYear: Number(form.elements.birthYear.value),
+        ward: form.elements.ward.value,
+        phone: form.elements.phone.value.trim(),
+        level: form.elements.level.value,
+        experience: form.elements.experience.value,
+        preferredTimes: getCheckedValues(form, 'preferredTimes'),
+        availableDays: getCheckedValues(form, 'availableDays'),
+        goals: getCheckedValues(form, 'goals'),
+        note: form.elements.note.value.trim()
+      };
+    }
+
+    function showError(message) {
+      const errorNode = document.getElementById('formError');
+      errorNode.textContent = message;
+      errorNode.style.display = message ? 'block' : 'none';
+    }
+
     const form = document.getElementById('surveyForm');
 
-    form.addEventListener('submit', function (event) {
+    form.addEventListener('submit', (event) => {
       event.preventDefault();
+      showError('');
+
+      if (!form.checkValidity()) {
+        showError('Vui lòng điền đầy đủ các trường bắt buộc.');
+        form.reportValidity();
+        return;
+      }
+
+      const birthYearError = validateBirthYear(form.elements.birthYear.value);
+      if (birthYearError) {
+        showError(birthYearError);
+        return;
+      }
+
+      const payload = buildPayload(form);
+      console.log('survey_payload', payload);
       alert('Cảm ơn bạn! Khảo sát đã được ghi nhận.');
       form.reset();
     });
