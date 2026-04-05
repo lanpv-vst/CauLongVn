@@ -159,6 +159,8 @@
           <label class="option"><input type="radio" name="frequency" value="5+" /> Phường 7</label>
           <label class="option"><input type="radio" name="frequency" value="5+" /> Khác</label>
         </div>
+        <label for="age">Số điện thoại / Zalo (không bắt buộc)</label>
+        <input id="age" name="age" type="number" placeholder="097345333" />
       </fieldset>
 
       <fieldset>
@@ -180,7 +182,6 @@
           <label class="option"><input type="radio" name="frequency" value="5+" /> 1–3 năm</label>
           <label class="option"><input type="radio" name="frequency" value="5+" /> Trên 3 năm</label>
         </div>
-
         <label>Khung giờ bạn muốn chơi</label>
         <div class="options">
           <label class="option"><input type="checkbox" name="time" value="sáng" /> Buổi sáng (trước 11:00)</label>
@@ -188,11 +189,23 @@
           <label class="option"><input type="checkbox" name="time" value="tối" /> Chiều tối (17:00-19:00)</label>
           <label class="option"><input type="checkbox" name="time" value="tối" /> Tối (sau 19:00)</label>
         </div>
-
+        <label>Bạn có thể chơi vào ngày nào?</label>
+        <div class="options">
+          <label class="option"><input type="checkbox" name="time" value="sáng" /> Thứ 2 - 4 - 6</label>
+          <label class="option"><input type="checkbox" name="time" value="chiều" /> Thứ 3 - 5 - 7</label>
+          <label class="option"><input type="checkbox" name="time" value="tối" /> Chủ nhật</label>
+        </div>
+         <label>Bạn chơi cầu lông để:</label>
+        <div class="options">
+          <label class="option"><input type="checkbox" name="time" value="sáng" /> Giải trí, vận động</label>
+          <label class="option"><input type="checkbox" name="time" value="chiều" /> Rèn luyện sức khỏe</label>
+          <label class="option"><input type="checkbox" name="time" value="tối" /> Giao lưu, kết bạn</label>
+          <label class="option"><input type="checkbox" name="time" value="tối" /> Nâng cao trình độ / thi đấu</label>
+        </div>
         <label for="note">Ghi chú thêm</label>
         <textarea id="note" name="note" rows="4" placeholder="Ví dụ: ưu tiên sân trong nhà, khu vực gần trung tâm..."></textarea>
       </fieldset>
-
+      
       <button type="submit">Gửi khảo sát</button>
       <p class="note">* Thông tin của bạn chỉ dùng để ghép nhóm cầu lông phù hợp.</p>
     </form>
