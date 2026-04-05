@@ -140,31 +140,45 @@
     <form id="surveyForm">
       <fieldset>
         <legend>Thông tin cá nhân</legend>
-        <label for="name">Họ và tên *</label>
-        <input id="name" name="name" type="text" required placeholder="Ví dụ: Nguyễn Văn A" />
-
-        <label for="email">Email *</label>
-        <input id="email" name="email" type="email" required placeholder="example@email.com" />
-
-        <label for="age">Tuổi</label>
+        <label for="name">Giới tính *</label>
+        <div class="options">
+          <label class="option"><input type="radio" name="frequency" value="1-2" checked /> Nam</label>
+          <label class="option"><input type="radio" name="frequency" value="3-4" /> Nữ</label>
+          <label class="option"><input type="radio" name="frequency" value="5+" /> Khác</label>
+        </div>
+        <label for="age">Năm sinh</label>
         <input id="age" name="age" type="number" min="10" max="80" placeholder="Ví dụ: 25" />
+          <label for="name">Khu vực sinh sống *</label>
+        <div class="options">
+          <label class="option"><input type="radio" name="frequency" value="1-2" checked /> Phường 1, 2</label>
+          <label class="option"><input type="radio" name="frequency" value="3-4" /> Phường 2</label>
+          <label class="option"><input type="radio" name="frequency" value="5+" /> Phường 3</label>
+          <label class="option"><input type="radio" name="frequency" value="5+" /> Phường 4</label>
+          <label class="option"><input type="radio" name="frequency" value="5+" /> Phường 5</label>
+          <label class="option"><input type="radio" name="frequency" value="5+" /> Phường 6</label>
+          <label class="option"><input type="radio" name="frequency" value="5+" /> Phường 7</label>
+          <label class="option"><input type="radio" name="frequency" value="5+" /> Khác</label>
+        </div>
       </fieldset>
 
       <fieldset>
         <legend>Kỹ năng & mục tiêu</legend>
 
-        <label for="level">Trình độ hiện tại</label>
-        <select id="level" name="level">
-          <option value="beginner">Mới bắt đầu</option>
-          <option value="intermediate">Trung bình</option>
-          <option value="advanced">Nâng cao</option>
-        </select>
-
-        <label>Tần suất mong muốn mỗi tuần</label>
+        <label for="level">Bạn tự đánh giá trình độ cầu lông của mình</label>
         <div class="options">
-          <label class="option"><input type="radio" name="frequency" value="1-2" checked /> 1-2 buổi</label>
-          <label class="option"><input type="radio" name="frequency" value="3-4" /> 3-4 buổi</label>
-          <label class="option"><input type="radio" name="frequency" value="5+" /> 5 buổi trở lên</label>
+          <label class="option"><input type="radio" name="frequency" value="1-2" checked /> Mới bắt đầu (chưa nắm luật/kỹ thuật cơ bản)</label>
+          <label class="option"><input type="radio" name="frequency" value="3-4" /> Cơ bản (đánh qua lại, biết luật)</label>
+          <label class="option"><input type="radio" name="frequency" value="5+" /> Trung bình (di chuyển ổn, biết đánh đôi)</label>
+          <label class="option"><input type="radio" name="frequency" value="5+" /> Khá (có chiến thuật, điều cầu tốt)</label>
+          <label class="option"><input type="radio" name="frequency" value="5+" /> Nâng cao (thi đấu, đánh giải)</label>
+        </div>
+
+        <label>Bạn đã chơi cầu lông bao lâu?</label>
+        <div class="options">
+          <label class="option"><input type="radio" name="frequency" value="1-2" checked /> Dưới 3 tháng</label>
+          <label class="option"><input type="radio" name="frequency" value="3-4" /> 3–12 tháng</label>
+          <label class="option"><input type="radio" name="frequency" value="5+" /> 1–3 năm</label>
+          <label class="option"><input type="radio" name="frequency" value="5+" /> Trên 3 năm</label>
         </div>
 
         <label>Khung giờ phù hợp</label>
