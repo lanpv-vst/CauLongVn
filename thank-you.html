@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cảm ơn bạn đã gửi khảo sát</title>
+  <style>
+    :root {
+      --text: #0f172a;
+      --card: #ffffffde;
+      --accent: #ff5ca7;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      padding: 24px;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(255, 255, 255, 0.95) 0%, rgba(246, 248, 252, 0.86) 30%, rgba(238, 244, 253, 0.92) 100%),
+        linear-gradient(155deg, #71e3d4 0%, #9de36f 22%, #ffe16a 43%, #ffa95e 62%, #ff6fa8 82%, #7fd1ff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: absolute;
+      width: 42vmax;
+      height: 42vmax;
+      border-radius: 50%;
+      opacity: 0.25;
+      filter: blur(2px);
+      pointer-events: none;
+    }
+
+    body::before {
+      background: radial-gradient(circle, #ff74b8, transparent 64%);
+      top: -18vmax;
+      right: -8vmax;
+    }
+
+    body::after {
+      background: radial-gradient(circle, #65d4ff, transparent 65%);
+      left: -14vmax;
+      bottom: -16vmax;
+    }
+
+    .card {
+      width: min(760px, 100%);
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 24px;
+      box-shadow: 0 24px 48px rgba(32, 39, 73, 0.2);
+      padding: clamp(20px, 3vw, 36px);
+      text-align: center;
+      backdrop-filter: blur(3px);
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 4vw, 2.75rem);
+      line-height: 1.15;
+    }
+
+    p {
+      margin: 8px 0;
+      font-size: clamp(1rem, 2vw, 1.1rem);
+    }
+
+    .ribbon {
+      margin: 18px auto;
+      max-width: 540px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #47d3df, #6ddf84, #f7d25a, #ff9f54, #ff63a7, #61b7ff);
+      box-shadow: 0 6px 16px rgba(255, 99, 167, 0.25);
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 16px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), #5ab9ff);
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Cảm ơn bạn đã gửi khảo sát! 🏸</h1>
+    <div class="ribbon" aria-hidden="true"></div>
+    <p>Thông tin của bạn đã được ghi nhận thành công.</p>
+    <p>Chúng tôi sẽ dùng dữ liệu để ghép nhóm cầu lông phù hợp nhất với lịch và trình độ của bạn.</p>
+    <a class="btn" href="./index.html">Gửi khảo sát mới</a>
+  </main>
+</body>
+</html>
